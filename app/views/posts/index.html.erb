@@ -1,12 +1,31 @@
-<h1>Posts</h1>
+<% if current_user %>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
+<div class="section">
+    <div class="columns">
+
+      <div class="column is-one-fifth pr-6 mr-6">
+        <div class="box">
+          <h1 class="is-size-3 has-text-weight-bold has-text-info mb-0"> odinbook </h1>
+          <p class="is-size-6 is-family-sans-serif has-text-black"> Connect with friends and the world around you on Odinbook. </p>
+          </div>
+      </div>
+
+      <div class="column auto pl-6 pr-6 mr-6 ml-6">
+          <%= render "posts/feed" %>
+      </div>
+
+      <div class="column is-one-fifth pl-6 ml-6">
+        <div class="box">
+          <h1 class="is-size-3 has-text-weight-bold has-text-info mb-0"> odinbook </h1>
+          <p class="is-size-6 is-family-sans-serif has-text-black"> Connect with friends and the world around you on Odinbook. </p>
+        </div>
+      </div>
+
+    </div>
 </div>
 
-<%= link_to "New post", new_post_path %>
+<% elsif %>
+
+  <%= render template: "devise/sessions/new" %>
+
+<% end %>
