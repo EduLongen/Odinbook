@@ -23,6 +23,7 @@
 	  			<div class="content">
 	  				<strong><%= post.user.name %></strong><br />
 	  				<p><%= post.body %></p>
+					<p> Posted <%= time_tag post.created_at, "data-local": "time-ago" %></p>
 	  			</div>
 	        <% if user_signed_in? && current_user.id == post.user_id %>
 	  			<nav class="level">
