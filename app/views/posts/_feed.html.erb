@@ -1,5 +1,4 @@
 <div class="column mx-0 my-0 px-0 py-0">
-
 	<div class="media box">
 		<figure class="media-left">
 			<p class="image is-64x64">
@@ -7,9 +6,11 @@
 			</p>
 		</figure>
 		<div class="media-content">
-				<%#= render partial: 'posts/form', locals: {post: @post} %>
+			<%= render partial: 'posts/form', locals: { post: @post } %>
 		</div>
 	</div>
 
-	<%= render partial: 'posts/post', locals: {post: @post} %>
+	<% @posts.each do | post | %>
+		<%= render partial: 'posts/post', locals: { post: post } %>
+	<% end %>
 </div>
