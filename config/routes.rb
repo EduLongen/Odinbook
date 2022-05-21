@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   }
 
   resources :posts
+  resources :comments, only: [:create, :update, :destroy]
+
+  resources :posts do
+    resources :comments, only: [:create, :update, :destroy]
+  end
 
   get "/users/:id", to: "users#show", as: "user"
 
@@ -13,8 +18,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  devise_scope :user do
-    root to: "posts#index"
-  end
+  root "posts#index"
 
 end
