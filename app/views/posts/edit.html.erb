@@ -6,6 +6,11 @@
 	    <div class="media">
         <div class="media-content">
 	  		  <%= render 'posts/form', post: @post%>
+          <div class="form-actions pt-2">
+            <% if current_user && current_user == @post.user %>
+              <%= button_to "Delete", @post, method: :delete, class: "button is-danger is-light" %>
+            <% end %>
+          </div>
 	      </div>
 	    </div>
     </div>

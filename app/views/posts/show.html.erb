@@ -1,10 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<div class="section">
+    <div class="columns">
 
-<%= render @post %>
+      <div class="column is-one-fifth pr-6 mr-6">
+        <div class="box">
+          <h1 class="is-size-3 has-text-weight-bold has-text-info mb-0"> odinbook </h1>
+          <p class="is-size-6 is-family-sans-serif has-text-black"> Connect with friends and the world around you on Odinbook. </p>
+        </div>
+      </div>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+      <div class="column auto pl-6 pr-6 mr-6 ml-6">
+        <%= render @post %>
+      </div>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+      <div class="column is-one-fifth pl-6 ml-6">
+        <div class="box">
+          <h1 class="is-size-3 has-text-weight-bold has-text-info mb-0"> odinbook </h1>
+          <p class="is-size-6 is-family-sans-serif has-text-black"> Connect with friends and the world around you on Odinbook. </p>
+        </div>
+      </div>
+
+    </div>
 </div>
+

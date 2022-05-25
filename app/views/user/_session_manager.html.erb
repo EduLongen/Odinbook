@@ -7,11 +7,15 @@
         </a>
         <div class="navbar-dropdown is-right">
           <div class="navbar-item is-centered">
-            <%= link_to "Edit User", edit_user_registration_path, class: "button is-light" %>
+            <%= link_to current_user.name, user_path(current_user), class: "button is-link is-light" %>
           </div>
           <hr class="dropdown-divider" > 
           <div class="navbar-item is-centered">
-            <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "button is-dark" %>
+            <%= link_to "Edit User", edit_user_registration_path, class: "button is-link is-light" %>
+          </div>
+          <hr class="dropdown-divider" > 
+          <div class="navbar-item is-centered">
+            <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "button is-danger is-light" %>
           </div>
         </div>
       </div>

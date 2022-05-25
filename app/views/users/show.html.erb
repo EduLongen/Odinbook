@@ -1,0 +1,51 @@
+<div class="section">
+  <div class="columns">
+    <div class="column is-one-fifth pr-6 mr-6">
+      <div class="box">
+        <h1 class="is-size-3 has-text-weight-bold has-text-info mb-0"> odinbook </h1>
+        <p class="is-size-6 is-family-sans-serif has-text-black"> Connect with friends and the world around you on Odinbook. </p>
+      </div>
+    </div>
+    
+    <div class="column auto pl-6 pr-6 mr-6 ml-6">
+			
+      <div class="media box">
+				<figure class="media-left">
+					<p class="image is-64x64">
+						<%#= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
+					</p>
+				</figure>
+				<div class="content has-text-centered is-size-3">
+					<p><strong><%= @user.name %> <%= @user.surname %></strong></p>
+				</div>
+      </div>
+
+      <div class="box">
+        <div class="columns">
+          <div class="column is-one-third">
+            <div class="content has-text is-size-6">
+				      <p><strong> Email: </strong><%= @user.email %></p>
+			      </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="content has-text is-size-6">
+              <p><strong> Birthday: </strong><%= @user.dateOfBirth %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% @user.posts.each do | post | %>
+				<%= render partial: 'posts/post', locals: { post: post } %>
+			<% end %>
+
+    </div>
+    
+    <div class="column is-one-fifth pl-6 ml-6">
+      <div class="box">
+        <h1 class="is-size-3 has-text-weight-bold has-text-info mb-0"> odinbook </h1>
+        <p class="is-size-6 is-family-sans-serif has-text-black"> Connect with friends and the world around you on Odinbook. </p>
+      </div>
+    </div>
+  </div>
+</div>

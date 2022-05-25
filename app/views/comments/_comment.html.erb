@@ -1,12 +1,20 @@
-<div class="comment-<%= comment.id %> container"
-    style="border: 1px solid black; padding: 1em; margin: 1em;">
-  <%= comment.user.email %><br />
-  <span>Posted <%= time_ago_in_words(comment.created_at) %></span>
-  <% if current_user == comment.user %>
-    <div class="button-group float-end">
-      <%= button_to "Delete", [post, comment], class:"btn btn-danger", method: :delete %>
-    </div>
-  <% end %>
-  <hr />
-  <%= comment.body %>
+<div class="box">
+	<article class="media">
+		<div class="media-left">
+			<figure class="image is-64x64">
+				<%#= gravatar_image_tag(tweeet.user.email, size: 64, alt: tweeet.user.name) %>
+			</figure>
+		</div>
+		<div class="media-content">
+			<div class="content">
+				<p><strong><%= link_to comment.user.name, user_path(comment.user) %></strong> - <%= time_tag comment.created_at, "data-local": "time-ago" %></p>
+				<p><%= comment.body %></p>
+			</div>
+      <% if user_signed_in? && current_user.id == comment.user_id %>
+        <div class="level-right is-mobile">
+          <%= button_to "delete", [post, comment], method: :delete, class: "button is-small is-danger is-light" %>
+        </div>
+      <% end %>
+		</div>
+	</article>
 </div>
