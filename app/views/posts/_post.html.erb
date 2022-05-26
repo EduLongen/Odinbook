@@ -25,9 +25,20 @@
 	<br>
   <div class="container">
     <% post.comments.each do |comment| %>
-      <%= render partial: 'comments/comment', locals: {post: post, comment: comment} %>
+	  	<%= render partial: 'comments/comment', locals: {post: post, comment: comment} %>
     <% end %>
-  </div>
-	<hr class="divider">
-	<%= render partial: 'comments/form', locals: { post: post } %>
+		<a href="#" class="comment-form-display button is-info is-light level-right is-mobile mb-5"> reply </a>
+			<div class="comment-form">
+				<%= render partial: 'comments/form', locals: { post: post } %>
+			</div>
+	 </div>
 </div>
+
+<script>
+	document.querySelectorAll(".comment-form-display").forEach((el) => {
+		el.addEventListener("click", (ev) => {
+			ev.preventDefault();
+			el.nextElementSibling.style = "display: block;"
+		})
+	})
+</script>
