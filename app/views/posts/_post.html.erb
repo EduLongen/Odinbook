@@ -11,14 +11,25 @@
 					<p><strong><%= link_to post.user.name, user_path(post.user) %></strong> - <%= link_to time_tag(post.created_at, "data-local": "time-ago"), post %> </p>
 				</div>
 				<p><%= post.body %></p>
-      	<% if user_signed_in? && current_user.id == post.user_id %>
+				<div class="media in-line">
+					<% like = current_user.likes.find_by(post: post) %>
+					<% if like.nil? %>
+						<%= button_to "Like", likes_path, params: { like: { post_id: post}}, method: :post, class: "button is-small is-success is-light" %>
+					<% else %>
+						<%= button_to "Unlike", like_path(like), method: :delete, class: "button is-small is-danger is-light" %>
+					<% end %>
+					<div class="content">
+      					<%= pluralize(post.likes.count, "Like")%>
+					</div>
+				<% if user_signed_in? && current_user.id == post.user_id %>
 					<div class="level-right is-mobile">
 						<%= link_to edit_post_path(post), class: "level-item" do %>
 						  <span class="icon"><i class="fas fa-pencil" aria-hidden="true"></i></span>
 						<% end %>
 						<%= button_to "delete", post, method: :delete, class: "button is-small is-danger is-light" %>
 					</div>
-      	<% end %>
+      			<% end %>
+				</div>
 			</div>
 		</div>
 	</article>
