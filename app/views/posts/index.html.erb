@@ -11,7 +11,7 @@
       </div>
 
       <div class="column auto pl-6 pr-6 mr-6 ml-6">
-        <%= render partial: "posts/feed" %>
+        <%= render partial: "posts/feed", locals: { post: @post, likeable: @post } %>
       </div>
 
       <div class="column is-one-fifth pl-6 ml-6">

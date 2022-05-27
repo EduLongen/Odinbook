@@ -12,15 +12,7 @@
 				</div>
 				<p><%= post.body %></p>
 				<div class="media in-line">
-					<% like = current_user.likes.find_by(post: post) %>
-					<% if like.nil? %>
-						<%= button_to "Like", likes_path, params: { like: { post_id: post}}, method: :post, class: "button is-small is-success is-light" %>
-					<% else %>
-						<%= button_to "Unlike", like_path(like), method: :delete, class: "button is-small is-danger is-light" %>
-					<% end %>
-					<div class="content">
-      					<%= pluralize(post.likes.count, "Like")%>
-					</div>
+					<%= render partial: 'likes/button', locals: { likeable: @post } %>
 				<% if user_signed_in? && current_user.id == post.user_id %>
 					<div class="level-right is-mobile">
 						<%= link_to edit_post_path(post), class: "level-item" do %>

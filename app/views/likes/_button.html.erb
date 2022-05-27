@@ -1,0 +1,10 @@
+<% like = current_user.likes.find_by(likeable: likeable) %>
+<% if like.nil? %>
+	<%= button_to "Like", likes_path, params: { like: {likeable_id: likeable.id, likeable_type: likeable.class.to_s}}, method: :post, class: "button is-small is-success is-light" %>
+<% else %>
+	<%= button_to "Unlike", like_path(like), method: :delete, class: "button is-small is-danger is-light" %>
+<% end %>
+
+<div class="content">
+  <%= pluralize(likeable.likes.count, "Like")%>
+</div>
