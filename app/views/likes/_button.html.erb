@@ -5,6 +5,6 @@
 	<%= button_to "Unlike", like_path(like), method: :delete, class: "button is-small is-danger is-light" %>
 <% end %>
 
-<div class="content">
+<div class="content mx-3">
   <%= pluralize(likeable.likes.count, "Like")%>
 </div>

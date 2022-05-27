@@ -9,8 +9,9 @@
 			<%= render partial: 'posts/form', locals: { post: @post } %>
 		</div>
 	</div>
-
-	<% @posts.each do | post | %>
-		<%= render partial: 'posts/post', locals: { post: post, likeable: post } %>
-	<% end %>
+	<div class="media-content mx-0 my-0 px-0 py-0">
+		<% @posts.each do | post | %>
+			<%= render partial: 'posts/post', locals: { post: post, likeable: post } %>
+		<% end %>
+	</div>
 </div>
