@@ -1,0 +1,15 @@
+<h3><%= @user.name %>'s Friends</h3>
+
+<div class='friends-container'>
+  <% @friends.each do |friend| %>
+    <div class='friend-full-row'>
+      <div class='friend-row'>
+        <%= avatar_thumbnail(friend, 'friend-list-avatar') %>
+        <%= link_to friend.name, user_path(friend) %>
+      </div>
+      <div class='friendship-indicator'>
+        <%= friendship_indicator(friend) %>
+      </div>
+    </div>
+  <% end %>
+</div>

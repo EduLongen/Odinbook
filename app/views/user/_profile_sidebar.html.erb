@@ -1,0 +1,52 @@
+<div id='profile_sidebar'>
+
+  <figure class="image is-64x64">
+		<%#= gravatar_image_tag(tweeet.user.email, size: 64, alt: tweeet.user.name) %>
+	</figure>
+
+  <hr>
+
+  <%= link_to posts_path do %>
+    <div class='profile-row'>
+      <ion-icon name="newspaper-outline"></ion-icon>
+      <span>Timeline</span>
+    </div>
+  <% end %>
+
+  <%= link_to current_user do %>
+    <div class='profile-row'>
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <span><%=current_user.name%></span>
+    </div>
+  <% end %>
+
+  <%= link_to edit_user_registration_path do %> 
+    <div class='profile-row'>
+      <ion-icon name="color-palette-outline"></ion-icon>
+      <span>Edit Profile</span>
+    </div>
+  <% end %>
+
+  <%= link_to friends_requests_path do %>
+    <div class='profile-row'>
+      <% notifications = current_user.friend_invitations.count %>
+      <ion-icon name="flag-outline"></ion-icon>
+      <span>Friend Requests<%= " (#{notifications})" if notifications > 0 %></span>
+    </div>
+  <% end %>
+
+  <%= link_to friends_path do %>
+    <div class='profile-row'>
+      <ion-icon name="people-outline"></ion-icon>
+      <span>Friends</span>
+    </div>
+  <% end %>
+
+  <%= link_to friends_find_path do %>
+    <div class='profile-row'>
+      <ion-icon name="telescope-outline"></ion-icon>
+      <span>Find Friends</span>
+    </div>
+  <% end %>
+
+</div>

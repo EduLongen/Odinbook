@@ -1,0 +1,29 @@
+<div id='friends-sidebar'>
+  <% suggestions =  current_user.no_contacts.limit(3).order("RANDOM()") %>
+  <% unless suggestions.empty? %>
+    <div id='friend-suggestions'>
+      <h4>Friend Suggestions</h4>
+      <% suggestions.each do |friend| %>
+        <div class='friend-full-row'>
+          <div class='friend-row'>
+            <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
+            <%= link_to friend.name, user_path(friend) %>
+          </div>
+          <div>
+            <%= button_to friend_requests_path, method: :post, class: 'add-friend', params: { recipient_id: friend.id } do %>
+              <i class="fas fa-user-plus"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
+  <h4>Friends</h4>
+  <% current_user.friends.order(:name).each do |friend| %>
+    <div class='friend-row'>
+      <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
+      <%= link_to friend.name, user_path(friend) %>
+    </div>
+  <% end %>
+</div>

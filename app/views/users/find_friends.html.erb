@@ -1,0 +1,20 @@
+<h3>Find Friends</h3>
+
+<div class='friends-container'>
+  <% pending_requests = current_user.requested_friends.pluck(:id) %>
+  <% current_user.non_friends_and_pending.order(:name).each do |friend| %>
+    <div class='friend-full-row'>
+      <div class='friend-row'>
+        <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
+        <%= link_to friend.name, user_path(friend) %>
+      </div>
+      <% if !!pending_requests.delete(friend.id) %>
+        <i class="far fa-clock"></i>
+      <% else %>
+        <%= button_to friend_requests_path, method: :post, class: 'add-friend', params: { recipient_id: friend.id } do %>
+          <i class="fas fa-user-plus"></i>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
