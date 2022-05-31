@@ -1,15 +1,45 @@
-<h3><%= @user.name %>'s Friends</h3>
+<div class="section">
+    <div class="columns">
 
-<div class='friends-container'>
-  <% @friends.each do |friend| %>
-    <div class='friend-full-row'>
-      <div class='friend-row'>
-        <%= avatar_thumbnail(friend, 'friend-list-avatar') %>
-        <%= link_to friend.name, user_path(friend) %>
+      <div class="column is-one-fifth pr-6 mr-6">
+        <div class="box">
+          <%= render partial: "user/profile_sidebar", locals: { friends: @friends } %>
+        </div>
       </div>
-      <div class='friendship-indicator'>
-        <%= friendship_indicator(friend) %>
+
+      <div class="column auto pl-6 pr-6 mr-6 ml-6">
+        <div class="box">
+
+          <h3><strong><%= @user.name %>'s Friends</strong></h3>
+          
+          <hr>
+
+          <div class="level">
+
+            <% @friends.each do |friend| %>
+
+                <div class="level-left">
+                  <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
+                  <%= link_to friend.name, user_path(friend) %>
+                </div>
+
+                <div class="level-right">
+                  <%= friendship_indicator(friend) %>
+                </div>
+
+            <% end %>
+          </div>
+        
+        </div>
       </div>
+
+      <div class="column is-one-fifth pl-6 ml-6">
+        <div class="box">
+          <%= render partial: "user/friends_sidebar", locals: { friends: @friends } %>
+        </div>
+      </div>
+
     </div>
-  <% end %>
 </div>
+
+

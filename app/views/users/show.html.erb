@@ -1,9 +1,9 @@
 <div class="section">
   <div class="columns">
+
     <div class="column is-one-fifth pr-6 mr-6">
       <div class="box">
-        <h1 class="is-size-3 has-text-weight-bold has-text-info mb-0"> odinbook </h1>
-        <p class="is-size-6 is-family-sans-serif has-text-black"> Connect with friends and the world around you on Odinbook. </p>
+        <%= render partial: "user/profile_sidebar", locals: { friends: @friends } %>
       </div>
     </div>
     
@@ -43,9 +43,9 @@
     
     <div class="column is-one-fifth pl-6 ml-6">
       <div class="box">
-        <h1 class="is-size-3 has-text-weight-bold has-text-info mb-0"> odinbook </h1>
-        <p class="is-size-6 is-family-sans-serif has-text-black"> Connect with friends and the world around you on Odinbook. </p>
+        <%= render partial: "user/friends_sidebar", locals: { friends: @friends } %>
       </div>
     </div>
+    
   </div>
 </div>

@@ -1,16 +1,18 @@
-<div id='friends-sidebar'>
+<div id="media">
   <% suggestions =  current_user.no_contacts.limit(3).order("RANDOM()") %>
   <% unless suggestions.empty? %>
-    <div id='friend-suggestions'>
-      <h4>Friend Suggestions</h4>
+    <div id="content">
+      <div class="has-text is-size-6 mb-3">
+        <strong>Friend Suggestions</strong>
+      </div>
       <% suggestions.each do |friend| %>
-        <div class='friend-full-row'>
-          <div class='friend-row'>
+        <div class="level my-3">
+          <div class="level-left">
             <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
             <%= link_to friend.name, user_path(friend) %>
           </div>
-          <div>
-            <%= button_to friend_requests_path, method: :post, class: 'add-friend', params: { recipient_id: friend.id } do %>
+          <div class="level-right">
+            <%= button_to friend_requests_path, method: :post, class: "button is-small is-info is-light px-2", params: { recipient_id: friend.id } do %>
               <i class="fas fa-user-plus"></i>
             <% end %>
           </div>
@@ -19,9 +21,11 @@
     </div>
     <hr>
   <% end %>
-  <h4>Friends</h4>
-  <% current_user.friends.order(:name).each do |friend| %>
-    <div class='friend-row'>
+  <div class="has-text is-size-6 mb-3">
+    <strong>Friends</strong>
+  </div>
+  <% current_user.friends.each do |friend| %>
+    <div class="media in-line level-left is-mobile">
       <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
       <%= link_to friend.name, user_path(friend) %>
     </div>

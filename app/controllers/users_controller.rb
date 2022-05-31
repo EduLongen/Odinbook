@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def friends
     @user = params[:user_id] ? User.find(params[:user_id]) : current_user
-    @friends = @user.friends.order(:name)
+    @friends = @user.friends
   end
 
   def friend_requests

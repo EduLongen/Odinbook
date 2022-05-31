@@ -1,20 +1,52 @@
-<h3>Find Friends</h3>
+<div class="section">
+    <div class="columns">
 
-<div class='friends-container'>
-  <% pending_requests = current_user.requested_friends.pluck(:id) %>
-  <% current_user.non_friends_and_pending.order(:name).each do |friend| %>
-    <div class='friend-full-row'>
-      <div class='friend-row'>
-        <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
-        <%= link_to friend.name, user_path(friend) %>
+      <div class="column is-one-fifth pr-6 mr-6">
+        <div class="box">
+          <%= render partial: "user/profile_sidebar", locals: { friends: @friends } %>
+        </div>
       </div>
-      <% if !!pending_requests.delete(friend.id) %>
-        <i class="far fa-clock"></i>
-      <% else %>
-        <%= button_to friend_requests_path, method: :post, class: 'add-friend', params: { recipient_id: friend.id } do %>
-          <i class="fas fa-user-plus"></i>
-        <% end %>
-      <% end %>
+
+      <div class="column auto pl-6 pr-6 mr-6 ml-6">
+        <div class="box">
+
+          <div class="has-text is-size-6">
+            <strong>Find friends</strong>
+          </div>
+
+          <hr>
+
+          <div class="level">
+            <% pending_requests = current_user.requested_friends.pluck(:id) %>
+            <% current_user.non_friends_and_pending.order(:name).each do |friend| %>
+              
+              
+              <div class="level-left">
+                <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
+                <%= link_to friend.name, user_path(friend) %>
+              </div>
+              <div class="level-right">
+                <% if !!pending_requests.delete(friend.id) %>
+                  <i class="far fa-clock"></i>
+                <% else %>
+                  <%= button_to friend_requests_path, method: :post, class: 'button is-small is-info is-light px-2', params: { recipient_id: friend.id } do %>
+                    <i class="fas fa-user-plus"></i>
+                  <% end %>
+                <% end %>
+              </div>
+              
+
+            <% end %>
+          </div>
+        
+        </div>
+      </div>
+
+      <div class="column is-one-fifth pl-6 ml-6">
+        <div class="box">
+          <%= render partial: "user/friends_sidebar", locals: { friends: @friends } %>
+        </div>
+      </div>
+
     </div>
-  <% end %>
 </div>

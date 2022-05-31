@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :friend_requests, only: :create do
     member do
+      get 'confirm'
       post 'confirm'
       delete 'delete'
     end

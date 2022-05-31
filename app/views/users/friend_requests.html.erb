@@ -1,25 +1,55 @@
-<h3>Friend Requests</h3>
+<div class="section">
+    <div class="columns">
 
-<div class='friends-container'>
-  <% @invitations.each do |invitation| %>
-    <div class='friend-full-row'>
-      <div class='friend-row'>
-        <%#= avatar_thumbnail(invitation.requester, 'friend-list-avatar') %>
-        <%= link_to invitation.requester.name, user_path(invitation.requester) %>
+      <div class="column is-one-fifth pr-6 mr-6">
+        <div class="box">
+          <%= render partial: "user/profile_sidebar", locals: { friends: @friends } %>
+        </div>
       </div>
-      <div>
-        <%= link_to delete_friend_request_path(invitation),
-                    method: :delete,
-                    class: 'delete-request',
-                    data: { confirm: "Delete #{invitation.requester.name}'s friend request?" } do %>
-          <i class="fas fa-user-times"></i>
-        <% end %>
-        <%= link_to confirm_friend_request_path(invitation),
-                    method: :post,
-                    class: 'confirm-request' do %>
-          <i class="fas fa-user-check"></i>
-        <% end %>
+
+      <div class="column auto pl-6 pr-6 mr-6 ml-6">
+        <div class="box">
+
+          <div class="has-text is-size-6">
+            <strong>Friend Requests</strong>
+          </div>
+
+          <hr>
+          
+          <div class="level">
+            <% @invitations.each do |invitation| %>
+
+                <div class="level-left">
+                  <%#= avatar_thumbnail(invitation.requester, 'friend-list-avatar') %>
+                  <%= link_to invitation.requester.name, user_path(invitation.requester) %>
+                </div>
+
+                <div class="level-right">
+                  <%= link_to delete_friend_request_path(invitation),
+                              method: :delete,
+                              class: "button is-small is-danger is-light px-2 mx-3",
+                              data: { confirm: "Delete #{invitation.requester.name}'s friend request?" } do %>
+                    <i class="fas fa-user-times"></i>
+                  <% end %>
+                  <%= link_to confirm_friend_request_path(invitation),
+                              method: :post,
+                              class: "button is-small is-info is-light px-2" do %>
+                    <i class="fas fa-user-check"></i>
+                  <% end %>
+                </div>
+
+            <% end %>
+          </div>
+        
+        </div>
       </div>
+
+      <div class="column is-one-fifth pl-6 ml-6">
+        <div class="box">
+          <%= render partial: "user/friends_sidebar", locals: { friends: @friends } %>
+        </div>
+      </div>
+
     </div>
-  <% end %>
 </div>
+
