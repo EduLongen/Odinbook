@@ -10,7 +10,7 @@
 				<div class="field-group is-inline">
 					<p><strong><%= link_to post.user.name, user_path(post.user) %></strong> - <%= link_to time_tag(post.created_at, "data-local": "time-ago"), post %> </p>
 				</div>
-				<p><%= post.body %></p>
+				<%= post.body %>
 				<div class="media in-line">
 					<%= render partial: 'likes/button', locals: { post: post, likeable: post } %>
 				<% if user_signed_in? && current_user.id == post.user_id %>
