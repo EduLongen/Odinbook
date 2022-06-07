@@ -12,7 +12,11 @@
       <div class="media box">
 				<figure class="media-left">
 					<p class="image is-64x64">
-						<%#= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
+						<% if @user.avatar.attached? %>
+		        	<%= image_tag @user.avatar, resize_to_fill: [150, 150], class:"is-rounded" %>
+		        <% else %>
+			        <%= image_tag "default_avatar.png" %>
+		        <% end %>
 					</p>
 				</figure>
 				<div class="content has-text-centered is-size-3">

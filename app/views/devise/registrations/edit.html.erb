@@ -12,6 +12,23 @@
 
           <div class="field">
             <div class="control">
+              <div class="columns">
+                <div class="column is-one-third image is-rounded">
+                  <% if current_user.avatar.attached? %>
+		        	      <%= image_tag user.avatar(resource, 100), resize_to_fill: [150, nil], class:"is-rounded" %>
+		              <% else %>
+			              <%= image_tag "default_avatar.png" %>
+		              <% end %>
+                </div>
+                <div class="column is-two-third">
+                  <%= f.input :avatar, required: true, input_html: { class: "button is-info is-light"}, wrapper: false, label_html: {class: "label"}  %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
               <%= f.input :name, required: true, autofocus: true, input_html: { class: "input"}, wrapper: false, label_html: {class: "label"} %>
             </div>
           </div>

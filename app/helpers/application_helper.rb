@@ -49,5 +49,13 @@ module ApplicationHelper
       end
     display.html_safe
   end
-  
+
+  def user_avatar(user, size=40)
+    if user.avatar.attached?
+      user.avatar.variant(resize_to_fill: [150, 150])
+    else user.avatar.empty?
+      "/default_avatar.png"
+    end
+  end
+
 end

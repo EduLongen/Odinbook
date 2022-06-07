@@ -5,9 +5,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  include Gravtastic
+  gravtastic
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_one_attached :avatar
 
   has_many :friend_requests,
     foreign_key: :requester_id,
@@ -80,6 +84,14 @@ class User < ApplicationRecord
     User.joins(join_statement)
         .where( friendships: { id: nil }, friend_requests: { id: nil} )
         .where.not(id: id)
+  end
+
+  def user_avatar(user, size=40)
+    if user.avatar.attached?
+      user.avatar.variant(resize: [150, 150])
+    else
+      "/default_avatar.png"
+    end
   end
 
 end

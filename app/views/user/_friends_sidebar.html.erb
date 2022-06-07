@@ -7,9 +7,13 @@
       </div>
       <% suggestions.each do |friend| %>
         <div class="level my-3">
-          <div class="level-left">
-            <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
-            <%= link_to friend.name, user_path(friend) %>
+          <div class="level-left image is-rounded is-48x48">
+            <% if friend.avatar.attached? %>
+			        <%= image_tag user_avatar(friend), class:"is-rounded" %>
+	          <% else %>
+			        <%= image_tag "default_avatar.png" %>
+		        <% end %>
+            <%= link_to friend.name, user_path(friend), class:"ml-3" %>
           </div>
           <div class="level-right">
             <%= button_to friend_requests_path, method: :post, class: "button is-small is-info is-light px-2", params: { recipient_id: friend.id } do %>
@@ -25,9 +29,13 @@
     <strong>Friends</strong>
   </div>
   <% current_user.friends.each do |friend| %>
-    <div class="media in-line level-left is-mobile">
-      <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
-      <%= link_to friend.name, user_path(friend) %>
+    <div class="media in-line level-left is-mobile image is-rounded is-48x48">
+      <% if friend.avatar.attached? %>
+			  <%= image_tag user_avatar(friend), class:"is-rounded" %>
+	    <% else %>
+			  <%= image_tag "default_avatar.png" %>
+		  <% end %>
+      <%= link_to friend.name, user_path(friend), class:"ml-3" %>
     </div>
   <% end %>
 </div>

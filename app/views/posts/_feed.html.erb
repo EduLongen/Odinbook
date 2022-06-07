@@ -1,8 +1,12 @@
 <div class="column mx-0 my-0 px-0 py-0">
 	<div class="media box">
 		<figure class="media-left">
-			<p class="image is-64x64">
-				<%#= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
+			<p class="image is-64x64 is-rounded">
+				<% if current_user.avatar.attached? %>
+					<%= image_tag user_avatar(current_user), resize_to_fill: [150, nil], class:"is-rounded" %>
+				<% else %>
+					<%= image_tag "default_avatar.png" %>
+				<% end %>
 			</p>
 		</figure>
 		<div class="media-content">

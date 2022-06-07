@@ -2,9 +2,15 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-end">
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          <%= current_user.name %>
-        </a>
+        <div class="navbar-link">
+          <div class="image is-rounded">
+            <% if current_user.avatar.attached? %>
+					    <%= image_tag user_avatar(current_user), resize_to_fill: [150, nil], class:"is-rounded" %>
+				    <% else %>
+					    <%= image_tag "default_avatar.png" %>
+				    <% end %>
+          </div>
+        </div>
         <div class="navbar-dropdown is-right">
           <div class="navbar-item is-centered">
             <%= link_to current_user.name, user_path(current_user), class: "button is-link is-light" %>

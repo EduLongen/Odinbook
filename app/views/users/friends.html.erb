@@ -18,9 +18,13 @@
 
             <% @friends.each do |friend| %>
 
-                <div class="level-left">
-                  <%#= avatar_thumbnail(friend, 'friend-list-avatar') %>
-                  <%= link_to friend.name, user_path(friend) %>
+                <div class="level-left image is-rounded is-64x64">
+                  <% if friend.avatar.attached? %>
+			              <%= image_tag user_avatar(friend), class:"is-rounded" %>
+	                <% else %>
+			              <%= image_tag "default_avatar.png" %>
+		              <% end %>
+                  <%= link_to friend.name, user_path(friend), class:"ml-3" %>
                 </div>
 
                 <div class="level-right">

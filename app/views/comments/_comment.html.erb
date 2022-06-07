@@ -2,7 +2,11 @@
 	<article class="media">
 		<div class="media-left">
 			<figure class="image is-64x64">
-				<%#= gravatar_image_tag(tweeet.user.email, size: 64, alt: tweeet.user.name) %>
+				<% if comment.user.avatar.attached? %>
+					<%= image_tag user_avatar(comment.user), resize_to_fill: [150, nil], class:"is-rounded" %>
+				<% else %>
+					<%= image_tag "default_avatar.png" %>
+				<% end %>
 			</figure>
 		</div>
 		<div class="media-content">
