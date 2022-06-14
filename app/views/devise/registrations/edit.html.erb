@@ -15,7 +15,7 @@
               <div class="columns">
                 <div class="column is-one-third image is-rounded">
                   <% if current_user.avatar.attached? %>
-		        	      <%= image_tag user.avatar(resource, 100), resize_to_fill: [150, nil], class:"is-rounded" %>
+		        	      <%= image_tag user_avatar(current_user, 100), resize_to_fill: [150, nil], class:"is-rounded" %>
 		              <% else %>
 			              <%= image_tag "default_avatar.png" %>
 		              <% end %>
