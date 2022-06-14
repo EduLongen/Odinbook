@@ -4,6 +4,7 @@ This is part of the Private Events Project in The Odin Project’s Ruby on Rails
 
 You can find the live version on **[heroku](https://my-odinbook.herokuapp.com/)**.
 
+<img src="https://raw.githubusercontent.com/EduLongen/Odinbook/main/app/assets/images/signin.jpeg?raw=true" />
 ![index](../app/assets/images/signin.jpeg)
 
 ![index](../app/assets/images/index.png)
